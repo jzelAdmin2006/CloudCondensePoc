@@ -1,6 +1,8 @@
-CREATE TABLE CloudStorage
+CREATE TABLE cloud_storage
 (
 	ID INT IDENTITY,
-	NAME VARCHAR(MAX)
+	[name] VARCHAR(MAX) NOT NULL,
+	username VARCHAR(MAX) NOT NULL,
+	[password] VARCHAR(MAX) NOT NULL,
 	PRIMARY KEY(ID)
 )
