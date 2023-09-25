@@ -4,10 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class CloudCondensePoc2Application {
+public class CloudCondensePocApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(CloudCondensePoc2Application.class, args);
+		SpringApplication.run(CloudCondensePocApplication.class, args);
 	}
 
 }
