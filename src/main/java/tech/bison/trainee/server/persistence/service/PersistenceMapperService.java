@@ -18,7 +18,7 @@ public class PersistenceMapperService {
   }
 
   public CloudStorage fromEntity(CloudStorageEntity entity) {
-    return new CloudStorage(entity.getId(), entity.getName(), entity.getUsername(),
+    return new CloudStorage(entity.getId(), entity.getName(), entity.getType(), entity.getUsername(),
         encryptionService.decrypt(entity.getPassword()));
   }
 
@@ -26,6 +26,7 @@ public class PersistenceMapperService {
     final CloudStorageEntity entity = new CloudStorageEntity();
     entity.setId(entry.id());
     entity.setName(entry.name());
+    entity.setType(entry.type());
     entity.setUsername(entry.username());
     entity.setPassword(encryptionService.encrypt(entry.password()));
     return entity;

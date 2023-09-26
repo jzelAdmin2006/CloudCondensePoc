@@ -1,6 +1,8 @@
 package tech.bison.trainee.server.persistence.domain.cloud_storage;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -13,6 +15,10 @@ public class CloudStorageEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
+
+  @Enumerated(EnumType.STRING)
+  private CloudStorageType type;
+
   private String name;
   private String username;
   private String password;
@@ -49,4 +55,11 @@ public class CloudStorageEntity {
     this.password = password;
   }
 
+  public CloudStorageType getType() {
+    return type;
+  }
+
+  public void setType(CloudStorageType type) {
+    this.type = type;
+  }
 }
