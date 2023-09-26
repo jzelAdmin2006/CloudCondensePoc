@@ -1,4 +1,4 @@
-package tech.bison.trainee;
+package tech.bison.trainee.server.persistence.service;
 
 import org.jasypt.util.text.StrongTextEncryptor;
 import org.springframework.beans.factory.annotation.Value;

@@ -1,4 +1,4 @@
-package tech.bison.trainee;
+package tech.bison.trainee.server.application;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

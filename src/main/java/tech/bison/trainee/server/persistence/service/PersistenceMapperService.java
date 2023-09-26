@@ -1,9 +1,12 @@
-package tech.bison.trainee;
+package tech.bison.trainee.server.persistence.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import tech.bison.trainee.server.business.domain.cloud_storage.CloudStorage;
+import tech.bison.trainee.server.persistence.domain.cloud_storage.CloudStorageEntity;
 
 @Service
 public class PersistenceMapperService {

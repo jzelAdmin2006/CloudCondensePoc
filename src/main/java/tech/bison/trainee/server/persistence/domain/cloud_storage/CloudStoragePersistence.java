@@ -1,4 +1,4 @@
-package tech.bison.trainee;
+package tech.bison.trainee.server.persistence.domain.cloud_storage;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

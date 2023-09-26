@@ -1,8 +1,12 @@
-package tech.bison.trainee;
+package tech.bison.trainee.server.webservice.service;
 
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+
+import tech.bison.trainee.server.business.domain.cloud_storage.CloudStorage;
+import tech.bison.trainee.server.webservice.adapter.model.cloud_storage.CloudStorageRequestDto;
+import tech.bison.trainee.server.webservice.adapter.model.cloud_storage.CloudStorageResourceDto;
 
 @Service
 public class WebMapperService {
