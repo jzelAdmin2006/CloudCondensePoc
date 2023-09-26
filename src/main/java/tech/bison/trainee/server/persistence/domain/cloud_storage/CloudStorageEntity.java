@@ -18,10 +18,11 @@ public class CloudStorageEntity {
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private int id;
 
+  private String name;
+
   @Enumerated(EnumType.STRING)
   private CloudStorageType type;
 
-  private String name;
   private String username;
   private String password;
 
