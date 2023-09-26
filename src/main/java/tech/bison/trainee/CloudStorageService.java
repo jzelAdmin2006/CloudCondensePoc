@@ -14,4 +14,8 @@ public class CloudStorageService {
   public List<CloudStorage> getAllCloudStorageEntries() {
     return repository.findAll();
   }
+
+  public CloudStorage addCloudStorageEntry(CloudStorage entry) {
+    return repository.save(entry);
+  }
 }

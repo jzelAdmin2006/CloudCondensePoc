@@ -1,6 +1,25 @@
 package tech.bison.trainee;
 
-import org.springframework.data.jpa.repository.JpaRepository;
+import java.util.List;
 
-public interface CloudStorageRepository extends JpaRepository<CloudStorage, Integer> {
+import org.springframework.stereotype.Service;
+
+@Service
+public class CloudStorageRepository {
+  private final CloudStoragePersistence cloudStoragePersistence;
+  private final PersistenceMapperService mapperService;
+
+  public CloudStorageRepository(CloudStoragePersistence cloudStoragePersistence,
+      PersistenceMapperService persistenceMapperService) {
+    this.cloudStoragePersistence = cloudStoragePersistence;
+    this.mapperService = persistenceMapperService;
+  }
+
+  public List<CloudStorage> findAll() {
+    return mapperService.fromCloudStorageEntities(cloudStoragePersistence.findAll());
+  }
+
+  public CloudStorage save(CloudStorage entry) {
+    return mapperService.fromEntity(cloudStoragePersistence.save(mapperService.toEntity(entry)));
+  }
 }
