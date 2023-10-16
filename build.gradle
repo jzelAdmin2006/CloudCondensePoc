@@ -25,6 +25,11 @@ dependencies {
 	implementation 'org.jasypt:jasypt:1.9.3'
 	implementation 'org.projectlombok:lombok:1.18.30'
 	implementation 'org.springframework.boot:spring-boot-starter-security:3.1.4'
+	implementation group: 'commons-io', name: 'commons-io', version: '2.13.0'
+	implementation('com.github.lookfirst:sardine:5.12') {
+    	exclude group: 'org.slf4j', module: 'slf4j-simple'
+	}
+	implementation 'com.squareup.okhttp3:okhttp:4.11.0'
 	annotationProcessor 'org.projectlombok:lombok:1.18.30'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	
