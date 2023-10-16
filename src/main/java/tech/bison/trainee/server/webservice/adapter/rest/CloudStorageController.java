@@ -1,6 +1,7 @@
 package tech.bison.trainee.server.webservice.adapter.rest;
 
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import tech.bison.trainee.server.business.domain.cloud_storage.CloudStorage;
 import tech.bison.trainee.server.business.service.CloudStorageService;
 import tech.bison.trainee.server.persistence.domain.cloud_storage.CloudStorageType;
 import tech.bison.trainee.server.webservice.adapter.model.cloud_storage.CloudStorageRequestDto;
@@ -28,7 +30,10 @@ public class CloudStorageController {
 
   @GetMapping
   public ResponseEntity<List<CloudStorageResourceDto>> getAllEntries() {
-    return ResponseEntity.ok(webMapperService.toDtos(service.getAllCloudStorageEntries()));
+    return ResponseEntity.ok(webMapperService.toDtos(service.getAllCloudStorageEntries()
+        .stream()
+        .sorted(Comparator.comparing(CloudStorage::created).reversed())
+        .toList()));
   }
 
   @PostMapping

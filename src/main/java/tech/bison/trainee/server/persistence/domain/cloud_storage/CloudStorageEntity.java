@@ -1,5 +1,7 @@
 package tech.bison.trainee.server.persistence.domain.cloud_storage;
 
+import java.util.Date;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -30,4 +32,5 @@ public class CloudStorageEntity {
 
   private String username;
   private String password;
+  private Date created;
 }

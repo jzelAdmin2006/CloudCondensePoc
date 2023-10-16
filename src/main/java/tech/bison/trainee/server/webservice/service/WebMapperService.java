@@ -1,5 +1,6 @@
 package tech.bison.trainee.server.webservice.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.stream.Stream;
 
@@ -26,7 +27,7 @@ public class WebMapperService {
             .filter(type -> type.getDisplayName().equals(cloudStorageDto.type()))
             .findFirst()
             .orElse(CloudStorageType.UNKNOWN),
-        cloudStorageDto.username(), cloudStorageDto.password());
+        cloudStorageDto.username(), cloudStorageDto.password(), new Date());
   }
 
   public List<CloudStorageResourceDto> toDtos(List<CloudStorage> cloudStorageEntries) {
