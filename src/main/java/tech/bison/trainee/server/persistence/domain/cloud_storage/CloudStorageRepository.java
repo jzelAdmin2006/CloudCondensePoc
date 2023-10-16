@@ -1,6 +1,7 @@
 package tech.bison.trainee.server.persistence.domain.cloud_storage;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -24,5 +25,13 @@ public class CloudStorageRepository {
 
   public CloudStorage save(CloudStorage entry) {
     return mapperService.fromEntity(cloudStoragePersistence.save(mapperService.toEntity(entry)));
+  }
+
+  public Optional<CloudStorage> findById(int id) {
+    return cloudStoragePersistence.findById(id).map(mapperService::fromEntity);
+  }
+
+  public void delete(CloudStorage cloudStorage) {
+    cloudStoragePersistence.delete(mapperService.toEntity(cloudStorage));
   }
 }

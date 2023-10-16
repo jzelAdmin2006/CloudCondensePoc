@@ -3,10 +3,13 @@ package tech.bison.trainee.server.webservice.adapter.rest;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -39,6 +42,17 @@ public class CloudStorageController {
   @PostMapping
   public ResponseEntity<CloudStorageResourceDto> addEntry(@RequestBody CloudStorageRequestDto entry) {
     return ResponseEntity.ok(webMapperService.toDto(service.addCloudStorageEntry(webMapperService.fromDto(entry))));
+  }
+
+  @DeleteMapping("/{id}")
+  public ResponseEntity<Void> deleteEntry(@PathVariable int id) {
+    final Optional<CloudStorage> cloudStorage = service.findById(id);
+    if (cloudStorage.isPresent()) {
+      service.delete(cloudStorage.get());
+      return ResponseEntity.noContent().build();
+    } else {
+      return ResponseEntity.notFound().build();
+    }
   }
 
   @GetMapping("/types")
