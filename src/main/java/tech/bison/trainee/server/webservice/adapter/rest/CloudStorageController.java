@@ -3,7 +3,6 @@ package tech.bison.trainee.server.webservice.adapter.rest;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -45,14 +44,11 @@ public class CloudStorageController {
   }
 
   @DeleteMapping("/{id}")
-  public ResponseEntity<Void> deleteEntry(@PathVariable int id) {
-    final Optional<CloudStorage> cloudStorage = service.findById(id);
-    if (cloudStorage.isPresent()) {
-      service.delete(cloudStorage.get());
-      return ResponseEntity.noContent().build();
-    } else {
-      return ResponseEntity.notFound().build();
-    }
+  public ResponseEntity<CloudStorageResourceDto> deleteEntry(@PathVariable int id) {
+    return service.findById(id).map(entry -> {
+      service.delete(entry);
+      return ResponseEntity.ok(webMapperService.toDto(entry));
+    }).orElseGet(() -> ResponseEntity.notFound().build());
   }
 
   @GetMapping("/types")
